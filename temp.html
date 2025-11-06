@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Import Example</title>
+</head>
+<body>
+  <h2 id="demo">Result will appear here...</h2>
+  <button id="load">Convert Temperature</button>
+
+  <script type="module">
+    document.getElementById("load").addEventListener("click", async () => {
+      try {
+        const module = await import("./temperature.js");
+        const celsius = module.toCelsius(59);
+        document.getElementById("demo").textContent = `59°F = ${celsius.toFixed(2)}°C`;
+      } catch (error) {
+        console.error("Error loading module:", error);
+        document.getElementById("demo").textContent = "Error loading module.";
+      }
+    });
+  </script>
+</body>
+</html>
