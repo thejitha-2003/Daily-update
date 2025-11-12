@@ -1,0 +1,40 @@
+CREATE TABLE users1(
+    user_id int AUTO_INCREMENT primary key,
+    user_name varchar(100) not null,
+    email varchar(100) not null,
+    password varchar(255) not null,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+SELECT * FROM
+
+INSERT INTO USERS(USER_ID,USER_NAME,EMAIL,password) VALUEs (20,"RAMa","krishna@gmail.com","ram@1236t");
+INSERT INTO USERS(USER_ID,USER_NAME,EMAIL,PASSWORD) VALUEs (21,"krishna","rama@gmail.com","krishna@1236t")
+INSERT INTO USERS(USER_ID,USER_NAME,EMAIL,password) VALUEs (22,"mona","mona@gmail.com","mon@1236t");
+INSERT INTO USERS(USER_ID,USER_NAME,EMAIL,PASSWORD) VALUEs (23,"thejitha","theju@gmail.com","theju@1236t");
+
+ 
+
+ SELECT * FROM CITY WHERE COUNTRYCODE="IND";
+  SELECT * FROM CITY WHERE DISTR
+  ICT="KARNATAKA";
+    SELECT * FROM CITY WHERE DISTRICT="KARNATAKA" AND POPULATION >250000;
+        SELECT * FROM CITY WHERE DISTRICT="KARNATAKA" AND POPULATION BETWEEN 250000 AND 300000;
+
+        SELECT * FROM CITY WHERE DISTRICT="KARNATAKA" order by population desc limit 5;
+      SELECT * FROM CITY WHERE DISTRICT="KARNATAKA" order by population desc;
+      SELECT * FROM CITY WHERE DISTRICT="KARNATAKA" and name like "%e"; 
+    SELECT * FROM CITY WHERE DISTRICT="KARNATAKA" and name like "%ng%";
+      SELECT * FROM CITY WHERE DISTRICT="KARNATAKA" and name like "m%";  
+      select name,countrycode;
+
+    WHERE
+    AND
+    OR
+    NOT
+    BETWEEN
+    LIKE
+    IS NULL
+    IS NOT NULL
+    EXISTS
+    SELECT * FROM CITY WHERE DISTRICT IN ('KARNATAKA','GOA','MADYA PRADESH');
+ SELECT * FROM CITY WHERE DISTRICT NOT IN ('KARNATAKA','GOA','MADYA PRADESH');
