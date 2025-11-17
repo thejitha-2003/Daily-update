@@ -1,0 +1,664 @@
+1. What is JavaScript and how does it differ from Java?
+JavaScript is a lightweight, interpreted programming language mainly used to make web
+ pages interactive.
+Java is a compiled, object-oriented programming language used for large applications.
+
+Difference
+
+JavaScript       	Java
+
+Interpreted     	Compiled
+Dynamic typing  	Static typing
+Runs in browser	     Runs on JVM
+Used for frontend	 Used for backend & Android
+
+Example
+
+console.log("Hello JavaScript");
+
+
+Primitive and Non-Primitive Data Types
+Primitive Data Types
+Primitive data types are the built-in data types provided by JavaScript. 
+They represent single values and are not mutable.the primitive data types are:
+string, number, boolean, null, undefined, bigint, symbol
+let num = 10;             // primitive
+
+Non-primitive Data Types
+Non-primitive data types, also known as reference types
+They can store collections of values or more complex entities.The non-primitive Data types are
+Objects (arrays, functions, dates, etc.)
+let user = { name: "Ram" } // non-primitive
+
+
+3. Difference between var, let, const
+1. Scope
+
+var → Function Scoped
+
+It is accessible anywhere inside the function in which it is declared.
+
+let → Block Scoped
+
+It is accessible only inside the { } block where it is declared.
+
+const → Block Scoped
+Same as let, but the value cannot be reassigned.
+
+Example:
+
+if (true) {
+  var a = 10;
+  let b = 20;
+  const c = 30;
+}
+
+console.log(a); // 10 (function/global scope)
+console.log(b); // Error (block scope)
+console.log(c); // Error (block scope)
+
+2.Hoisting Behavior
+
+ var → Hoisted with undefined
+
+ let → Hoisted but in TDZ (Temporal Dead Zone), so gives error
+
+ const → Same as let (in TDZ)
+
+Example:
+
+console.log(a); // undefined
+var a = 10;
+
+console.log(b); // Error (TDZ)
+let b = 20;
+
+console.log(c); // Error (TDZ)
+const c = 30;
+
+4.What is Hoisting?
+Hoisting is JavaScript behavior where variable and function declarations are
+ moved to the top before execution.
+
+ Example
+
+console.log(a); // undefined
+var a = 10;
+
+Hoisting differ for var and let ,const
+
+ var → Hoisted with undefined
+
+ let → Hoisted but in TDZ (Temporal Dead Zone), so gives error
+
+ const → Same as let (in TDZ)
+
+Example:
+
+console.log(a); // undefined
+var a = 10;
+
+console.log(b); // Error (TDZ)
+let b = 20;
+
+console.log(c); // Error (TDZ)
+const c = 30;
+
+5.Difference Between == and === in JavaScript
+1. == (Loose Equality / Abstract Equality)
+
+Definition
+== compares only values, and if the types are different,
+ JavaScript performs type coercion (automatic conversion).
+
+Example
+5 == "5"     // true  (string "5" converted to number 5)
+0 == false   // true
+null == undefined // true
+
+2. === (Strict Equality)
+
+Definition
+=== compares both value AND type.
+No type conversion happens.
+
+Example
+5 === "5"    // false (number vs string)
+0 === false  // false (number vs boolean)
+null === undefined // false
+
+6.Truthy and Falsy Values
+Falsy Values (VERY IMPORTANT)
+
+A falsy value is a value that becomes false when converted to a boolean.
+
+JavaScript has ONLY 7 falsy values:
+
+1. false
+2. 0
+3. -0
+4. 0n (BigInt zero)
+5. "" (empty string)
+6. null
+7. undefined
+8. NaN
+ Any of these values, when checked in if(), become false.
+
+Examples
+if (0) console.log("Yes");  // no output
+if ("") console.log("Yes"); // no output
+if (null) console.log("Yes"); // no output
+
+Truthy Values
+
+A truthy value is a value that becomes true when converted to a boolean.
+ Everything in JavaScript is truthy except the falsy values above.
+
+Common truthy examples:
+
+1."hello" (non-empty string)
+2." " (space string)
+3.1
+4.-1
+5.[] (empty array)
+6.{} (empty object)
+7.function(){}
+8.true
+
+Examples
+
+if ("hello") console.log("Yes"); // Yes
+if ([]) console.log("Yes");      // Yes
+if ({}) console.log("Yes");      // Yes
+
+7.Use of typeOf operator
+The typeof operator in JavaScript is used to find the data type of a value or variable.
+typeof is an operator that returns a string describing the type of the value.
+Syntax:
+typeof value
+Examples
+
+1.Check number
+console.log(typeof 10); // "number"
+
+2.Check string
+console.log(typeof "Hello");// "string"
+
+3.Check boolean
+console.log(typeof true);// "boolean"
+
+4.Check undefined
+let a;
+console.log(typeof a);// "undefined"
+
+5. Check object
+console.log(typeof { name: "Aman" });// "object"
+
+6. Check array
+console.log(typeof [1,2,3]);// "object"  
+
+7. Check function
+console.log(typeof function(){});// "function"
+
+
+
+8. What is NaN and how can you check for it?
+
+Definition 
+NaN (Not-a-Number) represents a value that is not a valid number.It is of type number, 
+even though it means “not a number”.It is the only value in JavaScript that is not equal to itself.
+Example
+console.log(Number.isNaN(0 / 0));   // true
+console.log(Number.isNaN("abc"));   // false
+console.log(isNaN("abc"));          // true (coerced to NaN)
+
+
+9. What is the difference between undefined and null?
+undefined
+A variable that is declared but not assigned gets undefined.
+JavaScript automatically assigns this value.
+Type of undefined is "undefined".
+
+
+null
+null is a deliberately assigned empty value.
+It is used to show “no value intentionally”.
+Type of null is "object" (a historical JS bug).
+
+
+Example
+let a;
+console.log(a);     // undefined
+
+let b = null;
+console.log(b);     // null
+
+
+0. What is type coercion in JavaScript?
+
+Definition 
+Type coercion is the process where JavaScript automatically converts one data type into another.
+It can be implicit (JS does it automatically) or explicit (developer converts manually).
+Common conversions involve string <->number, boolean <->number, etc.
+Examples
+Implicit
+console.log(5 + "3");   // "53"
+console.log("6" * 2);   // 12
+
+Explicit
+console.log(Number("42"));   // 42
+console.log(String(100));    // "100"
+
+
+11. Explain global scope, function scope, and block scope
+Definition 
+Global Scope: Variables declared outside any function or block and are accessible 
+everywhere in the program.
+Function Scope: Variables declared inside a function can be accessed only within that function.
+Block Scope: Variables declared inside {} using let or const are accessible only inside that block.
+
+Example
+let g = "global";   // global scope
+function test() {
+  let f = "function";   // function scope
+  if (true) {
+    let b = "block";    // block scope
+  }
+}
+
+
+2. How does hoisting work for variables and functions?
+
+Definition 
+Hoisting means JavaScript moves declarations to the top of their scope during compilation.
+Function declarations are fully hoisted (you can call them before defining).
+var declarations are hoisted but initialized as undefined.
+let/const declarations are hoisted but stay in the Temporal Dead Zone (TDZ) until execution.
+
+Example
+hello();   // Works
+function hello() { console.log("Hi"); }
+
+console.log(a); // undefined
+var a = 10;
+
+console.log(b); // error
+let b = 20;
+
+
+13. What happens if you use a variable before declaring it?
+Definition 
+Using a var variable before declaration gives undefined because of hoisting.
+Using let/const before declaration gives a ReferenceError due to the Temporal Dead Zone (TDZ).
+
+
+Example
+
+console.log(x);  // undefined
+var x = 5;
+
+console.log(y);  // ReferenceError
+let y = 10;
+
+
+14. What is lexical scope?
+
+Definition 
+
+Lexical scope means a variable is accessible based on where it is written in the code.
+
+Inner functions can access variables from outer functions, but not vice-versa.
+
+
+Example
+
+function outer() {
+  let a = 10;
+  function inner() {
+    console.log(a);   // can access a
+  }
+  inner();
+}
+
+15. How do closures work in JavaScript?
+
+Definition 
+
+A closure is created when an inner function remembers and accesses variables from its outer function even after the outer function has returned.
+
+Used for data privacy, function factories, etc.
+
+
+Example
+
+function outer() {
+  let count = 0;
+  return function inner() {
+    count++;
+    console.log(count);
+  };
+}
+const inc = outer();
+inc(); // 1
+inc(); // 2
+
+
+16. What is the difference between var, let, and const in terms of hoisting?
+
+Definition 
+
+var: Hoisted and initialized with undefined.
+
+let: Hoisted but stays in Temporal Dead Zone → using it early gives error.
+
+const: Same as let, but must be initialized at declaration.
+
+
+Example
+
+console.log(a); // undefined
+var a = 10;
+
+console.log(b); // error
+let b = 20;
+
+console.log(c); // error
+const c = 30;
+
+
+17. What are Temporal Dead Zones (TDZ)?
+
+Definition 
+
+TDZ is the time between hoisting and the actual initialization.
+
+Variables declared with let/const exist but cannot be accessed in TDZ.
+
+Accessing them before initialization throws a ReferenceError.
+
+
+Example
+
+console.log(x); // ReferenceError
+let x = 10;
+
+
+18. What are Immediately Invoked Function Expressions (IIFEs)?
+
+Definition (with important points)
+
+An IIFE is a function that is defined and executed immediately.
+
+Used to create a private scope and avoid polluting global variables.
+
+
+Example
+
+(function () {
+  console.log("IIFE executed");
+})();
+
+Great! Here are questions 19–30, answered in the same structure:
+
+✔ Definition with important points included
+✔ Then example
+
+
+---
+
+✅ 19. What is a pure function?
+
+Definition (with important points)
+
+A pure function is a function that always returns the same output for the same input.
+
+It does not modify external state (no side effects).
+
+It depends only on its arguments.
+
+
+Example
+
+function add(a, b) {
+  return a + b;   // pure
+}
+
+
+
+ 20. What is a higher-order function?
+
+Definition 
+
+A higher-order function is a function that takes another function as an argument
+OR returns a function.
+
+Used in callbacks, functional programming, array methods etc.
+
+
+Example
+
+function greet(fn) {
+  fn();   // accepting a function
+}
+greet(() => console.log("Hello"));
+
+
+
+
+ 21. What is a callback function?
+
+Definition 
+
+A callback function is a function that is passed as an argument to another function.
+
+It is executed after the main function finishes.
+
+Common in asynchronous operations.
+
+
+Example
+
+setTimeout(() => {
+  console.log("Callback executed");
+}, 1000);
+
+ 22. What are arrow functions and how are they different from normal functions?
+
+Definition 
+
+Arrow functions are a shorter syntax for writing functions.
+
+They do not have their own this, arguments, or prototype.
+
+They cannot be used as constructors.
+
+
+Example
+
+const add = (a, b) => a + b;
+
+
+
+23. What is the value of this inside an arrow function?
+
+Definition 
+Arrow functions use lexical this, meaning they inherit this from their surrounding scope.
+
+They do NOT bind their own this.
+
+
+Example
+
+const obj = {
+  a: 10,
+  show: () => console.log(this.a)  // this is NOT obj
+};
+obj.show();  // undefined
+
+
+
+
+24. What is function currying?
+
+Definition 
+
+Currying transforms a function so it takes one argument at a time.
+
+It returns another function until all arguments are provided.
+
+Used in functional programming and reuse.
+
+
+Example
+
+function curry(a) {
+  return function (b) {
+    return a + b;
+  };
+}
+console.log(curry(5)(3));  // 8
+
+
+---
+
+25. What is the difference between call, apply, and bind?
+
+Definition 
+
+call: Invokes a function immediately with a specific this and comma-separated arguments.
+
+apply: Same as call, but arguments are passed as array.
+
+bind: Returns a new function with a fixed this, does NOT execute immediately.
+
+
+Example
+
+function greet(msg) { console.log(msg + this.name); }
+
+greet.call({name: "Bob"}, "Hi ");  
+greet.apply({name: "Bob"}, ["Hi "]);  
+const fn = greet.bind({name: "Bob"}, "Hi ");
+fn();
+
+
+
+
+26. How do you pass parameters by reference vs value?
+
+Definition (with important points)
+
+Primitive types (number, string, boolean, etc.) are passed by value → copy is passed.
+
+Objects & arrays are passed by reference → changes affect original object.
+
+
+Example
+
+let a = 10;
+let b = a;   // value copy
+b = 20;
+
+let obj = {x: 1};
+let obj2 = obj;  // reference
+obj2.x = 5;
+
+
+27. What are default parameters in ES6?
+
+Definition (with important points)
+
+Default parameters allow you to assign default values to function parameters.
+
+Used when arguments are missing or undefined.
+
+
+Example
+
+function greet(name = "Guest") {
+  console.log("Hello " + name);
+}
+greet();    // Hello Guest
+
+
+
+28. What is recursion in JavaScript?
+
+Definition (with important points)
+
+Recursion is when a function calls itself.
+
+Used to solve problems that can be divided into smaller sub-problems.
+
+Must have a base condition to avoid infinite loop.
+
+
+Example
+
+function factorial(n) {
+  if (n === 1) return 1;
+  return n * factorial(n - 1);
+}
+
+
+---
+
+ 29. What is the difference between function declaration and function expression?
+
+Definition 
+
+Function Declaration: Defined using the function keyword and fully hoisted.
+
+Function Expression: Assigned to a variable and not fully hoisted.
+
+
+Example
+
+hello();  // works
+function hello() {}
+
+hi();     // error
+const hi = function() {};
+
+
+
+30. What is a generator function?
+
+Definition
+
+A generator function is declared using function* and can pause and resume execution.
+
+Uses the yield keyword to return values one at a time.
+
+Returns a generator object with a next() method.
+
+
+Example
+
+function* gen() {
+  yield 1;
+  yield 2;
+}
+const g = gen();
+console.log(g.next());  // {value: 1, done: false}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
