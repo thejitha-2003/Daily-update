@@ -435,7 +435,7 @@ OR returns a function.
 Used in callbacks, functional programming, array methods etc.
 
 
-Example
+Examples
 
 function greet(fn) {
   fn();   // accepting a function
