@@ -398,10 +398,6 @@ Example
   console.log("IIFE executed");
 })();
 
-Great! Here are questions 19–30, answered in the same structure:
-
-✔ Definition with important points included
-✔ Then example
 
 
 
@@ -545,7 +541,7 @@ fn();
 
 26. How do you pass parameters by reference vs value?
 
-Definition (with important points)
+Definition 
 
 Primitive types (number, string, boolean, etc.) are passed by value → copy is passed.
 
@@ -565,7 +561,7 @@ obj2.x = 5;
 
 27. What are default parameters in ES6?
 
-Definition (with important points)
+Definition 
 
 Default parameters allow you to assign default values to function parameters.
 
@@ -583,7 +579,7 @@ greet();    // Hello Guest
 
 28. What is recursion in JavaScript?
 
-Definition (with important points)
+Definition 
 
 Recursion is when a function calls itself.
 
